@@ -1,0 +1,47 @@
+//
+//  WhereToGo.swift
+//  MobilMitStil
+//
+//  Created by Michael Spilger on 26.02.21.
+//
+
+import SwiftUI
+
+struct WhereToGo: View {
+    @State var destination: String = "";
+    var body: some View {
+        VStack {
+            Text("Tell me your destination!").bold().font(.largeTitle).padding()
+            TextField("destTxtField", text: $destination).font(.title2).padding()
+                .background(Color.white)
+                .cornerRadius(20)
+                .padding()
+            Button(action: {
+                print("Edit tapped!")
+            }) {
+                HStack {
+                    Image(systemName: "figure.wave")
+                        .font(.title)
+                    Text("Lets Go!")
+                        .fontWeight(.semibold)
+                        .font(.title)
+                }
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding()
+                .foregroundColor(.white)
+                .background(Color("AccentColor"))
+                .cornerRadius(20)
+                .padding(20)
+            }
+        }.background(Color("BackgroundTop"))
+        .cornerRadius(20)
+        //.shadow(radius: 10)
+        
+    }
+}
+
+struct WhereToGo_Previews: PreviewProvider {
+    static var previews: some View {
+        WhereToGo()
+    }
+}

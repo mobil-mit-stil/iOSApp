@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F0A5CA525E9A1960075E5A7 /* WhereToGo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A5CA425E9A1960075E5A7 /* WhereToGo.swift */; };
+		9F0A5CA625E9A1960075E5A7 /* WhereToGo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A5CA425E9A1960075E5A7 /* WhereToGo.swift */; };
+		9F6AA19025E99905002B56B8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9F6AA18F25E99905002B56B8 /* .gitignore */; };
+		9F6AA19525E99B7D002B56B8 /* CarPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6AA19425E99B7D002B56B8 /* CarPlay.framework */; };
 		9FA1DEB325E997EE004FE770 /* MobilMitStilApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA1DEA025E997ED004FE770 /* MobilMitStilApp.swift */; };
 		9FA1DEB425E997EE004FE770 /* MobilMitStilApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA1DEA025E997ED004FE770 /* MobilMitStilApp.swift */; };
 		9FA1DEB525E997EE004FE770 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA1DEA125E997ED004FE770 /* ContentView.swift */; };
@@ -16,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F0A5CA425E9A1960075E5A7 /* WhereToGo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereToGo.swift; sourceTree = "<group>"; };
+		9F6AA18F25E99905002B56B8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		9F6AA19425E99B7D002B56B8 /* CarPlay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarPlay.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CarPlay.framework; sourceTree = DEVELOPER_DIR; };
 		9FA1DEA025E997ED004FE770 /* MobilMitStilApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilMitStilApp.swift; sourceTree = "<group>"; };
 		9FA1DEA125E997ED004FE770 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9FA1DEA225E997EE004FE770 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F6AA19525E99B7D002B56B8 /* CarPlay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,13 +52,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F6AA19325E99B7C002B56B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F6AA19425E99B7D002B56B8 /* CarPlay.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9FA1DE9A25E997ED004FE770 = {
 			isa = PBXGroup;
 			children = (
+				9F6AA18F25E99905002B56B8 /* .gitignore */,
 				9FA1DE9F25E997ED004FE770 /* Shared */,
 				9FA1DEA925E997EE004FE770 /* iOS */,
 				9FA1DEB025E997EE004FE770 /* macOS */,
 				9FA1DEA825E997EE004FE770 /* Products */,
+				9F6AA19325E99B7C002B56B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +78,7 @@
 				9FA1DEA025E997ED004FE770 /* MobilMitStilApp.swift */,
 				9FA1DEA125E997ED004FE770 /* ContentView.swift */,
 				9FA1DEA225E997EE004FE770 /* Assets.xcassets */,
+				9F0A5CA425E9A1960075E5A7 /* WhereToGo.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -168,6 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F6AA19025E99905002B56B8 /* .gitignore in Resources */,
 				9FA1DEB725E997EE004FE770 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,6 +209,7 @@
 			files = (
 				9FA1DEB525E997EE004FE770 /* ContentView.swift in Sources */,
 				9FA1DEB325E997EE004FE770 /* MobilMitStilApp.swift in Sources */,
+				9F0A5CA525E9A1960075E5A7 /* WhereToGo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +219,7 @@
 			files = (
 				9FA1DEB625E997EE004FE770 /* ContentView.swift in Sources */,
 				9FA1DEB425E997EE004FE770 /* MobilMitStilApp.swift in Sources */,
+				9F0A5CA625E9A1960075E5A7 /* WhereToGo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
