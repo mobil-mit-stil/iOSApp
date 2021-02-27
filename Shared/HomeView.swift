@@ -14,7 +14,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            Map(coordinateRegion: $coordinates).ignoresSafeArea()
+            MapBackground().ignoresSafeArea()
             ZStack {
                 VStack(alignment: .trailing) {
                     WhereToGo().padding()

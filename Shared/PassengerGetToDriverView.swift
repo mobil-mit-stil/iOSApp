@@ -28,8 +28,9 @@ struct PassengerGetToDriverView: View {
                         NavigationDirectionsView(direction: direction)
                     }
                 }.frame(height: 200, alignment: .top)
+                .padding()
             Spacer()
-            PassengerGetToDriverInfoView(name: "Luca", eta: 4)
+            PassengerGetToDriverInfoView(name: "Luca", eta: 4).padding()
         }
     }.navigationBarHidden(true)
   }
