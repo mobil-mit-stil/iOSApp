@@ -14,6 +14,7 @@ struct MapView: UIViewRepresentable {
   typealias UIViewType = MKMapView
   
     @Binding var directions: [MKRoute.Step]
+    @Binding var destination: MKPlacemark
   
   func makeCoordinator() -> MapViewCoordinator {
     return MapViewCoordinator()
@@ -34,17 +35,17 @@ struct MapView: UIViewRepresentable {
     let p1 = MKPlacemark(coordinate: location)
     
     // Boston
-    let p2 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 48.7784485, longitude: 9.1800132))
+    
     
     let request = MKDirections.Request()
     request.source = MKMapItem(placemark: p1)
-    request.destination = MKMapItem(placemark: p2)
+    request.destination = MKMapItem(placemark: destination)
     request.transportType = .automobile
     
     let directions = MKDirections(request: request)
     directions.calculate { response, error in
       guard let route = response?.routes.first else { return }
-      mapView.addAnnotations([p1, p2])
+      mapView.addAnnotations([p1, destination])
       mapView.addOverlay(route.polyline)
       mapView.setVisibleMapRect(
         route.polyline.boundingMapRect,

@@ -9,13 +9,16 @@ import SwiftUI
 import MapKit
 
 struct PassengerGetToDriverView: View {
-
+    init(pickUpPoint: MKPlacemark) {
+        self._pickUpPoint = State(initialValue: pickUpPoint)
+    }
+    @State private var pickUpPoint: MKPlacemark
     @State private var directions: [MKRoute.Step] = []
     @State private var showDirections = false
 
   var body: some View {
     ZStack {
-        MapView(directions: $directions).ignoresSafeArea()
+        MapView(directions: $directions, destination: $pickUpPoint).ignoresSafeArea()
         VStack {
 
                 ScrollView() {
@@ -35,6 +38,6 @@ struct PassengerGetToDriverView: View {
 
 struct PassengerGetToDriverView_Previews: PreviewProvider {
   static var previews: some View {
-    PassengerGetToDriverView()
+    PassengerGetToDriverView(pickUpPoint: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 49.29370900, longitude: 8.63844421)))
   }
 }
