@@ -22,18 +22,16 @@ struct PassengerGetToDriverView: View {
     ZStack {
         MapView(directions: $directions).ignoresSafeArea()
         VStack {
-            HStack {
+
                 ScrollView() {
                     ForEach(directions, id: \.self) { direction in
                         NavigationDirectionsView(direction: direction)
                     }
                 }.frame(height: 200, alignment: .top)
-                
-            }
             Spacer()
-  
+            PassengerGetToDriverInfoView(name: "Luca", eta: 4)
         }
-    }
+    }.navigationBarHidden(true)
   }
 }
 

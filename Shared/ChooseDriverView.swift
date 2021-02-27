@@ -22,6 +22,7 @@ struct ChooseDriverView: View {
         }
         .background(Color("Background"))
         .ignoresSafeArea()
+        .navigationBarHidden(true)
     }
 }
 

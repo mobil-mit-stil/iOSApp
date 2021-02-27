@@ -16,9 +16,7 @@ struct WhereToGo: View {
                 .background(Color.white)
                 .cornerRadius(20)
                 .padding()
-            Button(action: {
-                print("Edit tapped!")
-            }) {
+            NavigationLink(destination: ChooseDriverView()) {
                 HStack {
                     Image(systemName: "figure.wave")
                         .font(.title)

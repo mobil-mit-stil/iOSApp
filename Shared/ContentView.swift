@@ -7,18 +7,19 @@
 
 import SwiftUI
 import MapKit
+import CoreLocation
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
-            Color("Background").ignoresSafeArea()
-            VStack(alignment: .trailing) {
-                WhereToGo().padding()
-                DriverView(name: "Dumme Sau", eta: 4, latitude: 51.507222, longitude: -0.1275).padding()
-            }
-            
+        NavigationView {
+            HomeView()
+            /*
+            NavigationLink(destination: HomeView()) {
+                Text("Press on me")
+            }.buttonStyle(PlainButtonStyle())
+            */
         }
-       
+        .navigationBarHidden(true)
     }
 }
 

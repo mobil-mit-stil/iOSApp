@@ -22,9 +22,7 @@ struct DriverView: View {
     @State var places = [Place(name: "Driver", latitude: 51.508052, longitude: -0.076035)]
     var body: some View {
         
-        Button(action: {
-            print("Edit tapped!")
-        }) {
+        NavigationLink(destination: PassengerGetToDriverView()) {
             VStack {
                 Text(name)
                     .bold()
