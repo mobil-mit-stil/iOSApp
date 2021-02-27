@@ -9,6 +9,8 @@ import SwiftUI
 
 struct WhereToGo: View {
     @State var destination: String = "";
+    @State private var passenger = true;
+    @State private var freeSeats = 3
     var body: some View {
         VStack {
             Text("Tell me your destination!").bold().font(.largeTitle).padding()
@@ -16,21 +18,46 @@ struct WhereToGo: View {
                 .background(Color.white)
                 .cornerRadius(20)
                 .padding()
-            NavigationLink(destination: ChooseDriverView()) {
-                HStack {
-                    Image(systemName: "figure.wave")
-                        .font(.title)
-                    Text("Lets Go!")
-                        .fontWeight(.semibold)
-                        .font(.title)
+            Picker(selection: $passenger, label: Text("What is your favorite color?")) {
+                Text("Driver").tag(false)
+                Text("Passenger").tag(true)
+            }.pickerStyle(SegmentedPickerStyle())
+            .padding()
+            if passenger {
+                NavigationLink(destination: ChooseDriverView()) {
+                    HStack {
+                        Image(systemName: "figure.wave")
+                            .font(.title)
+                        Text("Lets Go!")
+                            .fontWeight(.semibold)
+                            .font(.title)
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color("AccentColor"))
+                    .cornerRadius(20)
+                    .padding(20)
                 }
-                .frame(minWidth: 0, maxWidth: .infinity)
-                .padding()
-                .foregroundColor(.white)
-                .background(Color("AccentColor"))
-                .cornerRadius(20)
-                .padding(20)
+            } else {
+                Stepper("Free seats:    \(freeSeats)", value: $freeSeats).padding()
+                NavigationLink(destination: PassengerGetToDriverView()) {
+                    HStack {
+                        Image(systemName: "car.fill")
+                            .font(.title)
+                        Text("Lets Go!")
+                            .fontWeight(.semibold)
+                            .font(.title)
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color("AccentColor"))
+                    .cornerRadius(20)
+                    .padding(20)
+                }
             }
+            
         }.background(Color("BackgroundTop"))
         .cornerRadius(20)
         .shadow(color: .gray, radius: 3, x: 3, y: 3)

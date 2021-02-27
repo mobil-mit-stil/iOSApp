@@ -25,6 +25,10 @@
 		9F0A5CD225E9D0220075E5A7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A5CD025E9D0220075E5A7 /* LocationManager.swift */; };
 		9F0A5CDD25E9D9250075E5A7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A5CDC25E9D9250075E5A7 /* HomeView.swift */; };
 		9F0A5CDE25E9D9250075E5A7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0A5CDC25E9D9250075E5A7 /* HomeView.swift */; };
+		9F3819BA25E9F5F90074803D /* DriverNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3819B925E9F5F90074803D /* DriverNavigationView.swift */; };
+		9F3819BB25E9F5F90074803D /* DriverNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3819B925E9F5F90074803D /* DriverNavigationView.swift */; };
+		9F3819C025E9F7F30074803D /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3819BF25E9F7F30074803D /* UIScreen.swift */; };
+		9F3819C125E9F7F30074803D /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3819BF25E9F7F30074803D /* UIScreen.swift */; };
 		9F6AA19025E99905002B56B8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9F6AA18F25E99905002B56B8 /* .gitignore */; };
 		9F6AA19525E99B7D002B56B8 /* CarPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6AA19425E99B7D002B56B8 /* CarPlay.framework */; };
 		9FA1DEB325E997EE004FE770 /* MobilMitStilApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA1DEA025E997ED004FE770 /* MobilMitStilApp.swift */; };
@@ -45,6 +49,8 @@
 		9F0A5CCB25E9CF490075E5A7 /* MapBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBackground.swift; sourceTree = "<group>"; };
 		9F0A5CD025E9D0220075E5A7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9F0A5CDC25E9D9250075E5A7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9F3819B925E9F5F90074803D /* DriverNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverNavigationView.swift; sourceTree = "<group>"; };
+		9F3819BF25E9F7F30074803D /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		9F6AA18F25E99905002B56B8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		9F6AA19425E99B7D002B56B8 /* CarPlay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarPlay.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CarPlay.framework; sourceTree = DEVELOPER_DIR; };
 		9FA1DEA025E997ED004FE770 /* MobilMitStilApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilMitStilApp.swift; sourceTree = "<group>"; };
@@ -76,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F3819BE25E9F7E00074803D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9F3819BF25E9F7F30074803D /* UIScreen.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		9F6AA19325E99B7C002B56B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +113,7 @@
 		9FA1DE9F25E997ED004FE770 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				9F3819BE25E9F7E00074803D /* Extensions */,
 				9FA1DEA025E997ED004FE770 /* MobilMitStilApp.swift */,
 				9F0A5CA925E9AC8F0075E5A7 /* DriverView.swift */,
 				9FA1DEA125E997ED004FE770 /* ContentView.swift */,
@@ -111,6 +126,7 @@
 				9F0A5CCB25E9CF490075E5A7 /* MapBackground.swift */,
 				9F0A5CD025E9D0220075E5A7 /* LocationManager.swift */,
 				9F0A5CDC25E9D9250075E5A7 /* HomeView.swift */,
+				9F3819B925E9F5F90074803D /* DriverNavigationView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -239,9 +255,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F3819BA25E9F5F90074803D /* DriverNavigationView.swift in Sources */,
 				9F0A5CCC25E9CF490075E5A7 /* MapBackground.swift in Sources */,
 				9FA1DEB525E997EE004FE770 /* ContentView.swift in Sources */,
 				9F0A5CD125E9D0220075E5A7 /* LocationManager.swift in Sources */,
+				9F3819C025E9F7F30074803D /* UIScreen.swift in Sources */,
 				9FA1DEB325E997EE004FE770 /* MobilMitStilApp.swift in Sources */,
 				9F0A5CAA25E9AC8F0075E5A7 /* DriverView.swift in Sources */,
 				9F0A5CDD25E9D9250075E5A7 /* HomeView.swift in Sources */,
@@ -257,9 +275,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F3819BB25E9F5F90074803D /* DriverNavigationView.swift in Sources */,
 				9F0A5CCD25E9CF490075E5A7 /* MapBackground.swift in Sources */,
 				9FA1DEB625E997EE004FE770 /* ContentView.swift in Sources */,
 				9F0A5CD225E9D0220075E5A7 /* LocationManager.swift in Sources */,
+				9F3819C125E9F7F30074803D /* UIScreen.swift in Sources */,
 				9FA1DEB425E997EE004FE770 /* MobilMitStilApp.swift in Sources */,
 				9F0A5CAB25E9AC8F0075E5A7 /* DriverView.swift in Sources */,
 				9F0A5CDE25E9D9250075E5A7 /* HomeView.swift in Sources */,

@@ -24,6 +24,7 @@ struct PassengerGetToDriverInfoView: View {
         .cornerRadius(20)
         .shadow(color: .gray, radius: 3, x: 3, y: 3)
         .font(.title)
+        .padding()
     }
 }
 

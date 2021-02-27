@@ -17,11 +17,11 @@ struct NavigationDirectionsView: View {
     var body: some View {
         VStack {
             Text(direction).font(.largeTitle).padding(15)
-        }.frame(width: 400, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+        }.frame(width: UIScreen.screenWidth * 0.9, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         .background(Color("BackgroundTop"))
         .cornerRadius(20)
         .shadow(color: .gray, radius: 3, x: 3, y: 3)
-        
+        .padding()
     }
 }
 
