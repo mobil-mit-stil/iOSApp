@@ -28,14 +28,14 @@ typealias SessionId = String;
 typealias Uuid = String;
 
 struct DriverInformation {
-    var userId: Uuid
+    var passengerId: Uuid
     var pickupPoint: Location
     var dropoffPoint: Location
     var requested: Bool
 }
 
 struct Estimation {
-    var userId: Uuid
+    var passengerId: Uuid
     var pickupTime: Int
     var destinationTime: Int
 }
@@ -46,7 +46,7 @@ enum AcceptanceStatus {
 }
 
 struct Confirmation {
-    userId: Uuid
+    passengerId: Uuid
     status: AcceptanceStatus
 }
 
