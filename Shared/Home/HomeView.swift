@@ -11,7 +11,7 @@ import CoreLocation
 
 struct HomeView: View {
     @State var coordinates = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-    @ObservedObject var locationManager = LocationManager()
+    var locationManager = LocationManager()
     var userLatitude: CLLocationDegrees {
         return locationManager.lastLocation?.coordinate.latitude ?? 48.7784485
     }
@@ -28,10 +28,7 @@ struct HomeView: View {
                     //DriverView(name: "Dumme Sau", eta: 4, latitude: 51.507222, longitude: -0.1275).padding()
                 }
             }
-            
-            
         }
-       
     }
 }
 

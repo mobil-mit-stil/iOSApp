@@ -10,16 +10,16 @@ import MapKit
 
 struct PassengerGetToDriverView: View {
     init() {
-        destinationPl = MapData()
-        destinationPl.loadPlaceMark()
+        //destinationPl = MapData()
+        //destinationPl.loadPlaceMark()
     }
-    @ObservedObject var destinationPl:MapData
+    //@ObservedObject var destinationPl:MapData
     @State private var directions: [MKRoute.Step] = []
     @State private var showDirections = false
 
   var body: some View {
     ZStack {
-        MapView(directions: $directions, destination: $destinationPl.placeMark).ignoresSafeArea()
+        MapView(data: MapDisplayData()).ignoresSafeArea()
         VStack {
 
                 ScrollView() {

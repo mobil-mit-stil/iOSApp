@@ -10,26 +10,26 @@ import MapKit
 
 struct DriverView: View {
     
-    init(name: String, eta: Int, latitude: CGFloat, longitude: CGFloat) {
-        self._name = State(initialValue: name)
-        self._eta = State(initialValue: eta)
-        self._coordinates = State(initialValue: MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude)), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)))
+    init(pickupTime: Int, destinationTime: Int) {
+        self._name = State(initialValue: pickupTime)
+        self._eta = State(initialValue: destinationTime)
+        self._coordinates = State(initialValue: MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: CLLocationDegrees(51.507222), longitude: CLLocationDegrees(-0.1275)), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))
     }
     
-    @State var name: String = ""
+    @State var name: Int = 0
     @State var eta: Int = 0 // Estimated time of arrival
-    @State var coordinates = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 100, longitudeDelta: 100))
-    @State var places = [Place(name: "Driver", latitude: 51.508052, longitude: -0.076035)]
+    @State var coordinates = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    @State var places = [Place(name: "Driver", latitude: 51.507222, longitude: 1275)]
     var body: some View {
         
         NavigationLink(destination: PassengerGetToDriverView()) {
             VStack {
-                Text(name)
+                Text("\(name) minutes until the driver arrives at the pick up point!")
                     .bold()
-                    .font(.largeTitle)
+                    .font(.title2)
                     .padding()
                     .foregroundColor(.black)
-                Text("The driver will be here in \(eta) minutes").foregroundColor(.black)
+                Text("The ride with this driver will take \(eta) minutes").foregroundColor(.black)
                 Map(coordinateRegion: $coordinates, annotationItems: places) { place in
                     MapMarker(coordinate: place.coordinate)
                 }
@@ -46,7 +46,7 @@ struct DriverView: View {
 
 struct DriverView_Previews: PreviewProvider {
     static var previews: some View {
-        DriverView(name: "Dumme Sau", eta: 4, latitude: 51.507222, longitude: -0.1275)
+        DriverView(pickupTime: 5, destinationTime: 25)
     }
 }
 

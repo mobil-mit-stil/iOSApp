@@ -20,7 +20,7 @@ enum NetworkError: Error {
 class DriverApi {
     var sessionId: String = ""
     init() {}
-    
+    static var shared = DriverApi()
     public func startDrive(config: RideConfig) -> Result<Void, NetworkError> {
         guard let url = URL(string: API_URL + "/driver/start") else {
             return .failure(.url)
@@ -39,8 +39,10 @@ class DriverApi {
         
         let semaphore = DispatchSemaphore(value: 0)
         
-        URLSession.shared.dataTask(with: url) { (data, _, _) in
+        URLSession.shared.dataTask(with: req) { (data, _, error) in
             do {
+                print(String(data: data!, encoding:.utf8
+                ))
                 if let data = data {
                     let decoded = try JSONDecoder().decode(SessionResponse.self, from: data)
                     self.sessionId = decoded.sessionId

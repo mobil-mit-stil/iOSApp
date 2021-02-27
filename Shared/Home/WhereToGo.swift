@@ -19,6 +19,7 @@ struct WhereToGo: View {
     @State var destination: String = "";
     @State private var passenger = true;
     @State private var freeSeats = 3
+    @State var driverController = DriverController()
    
     var body: some View {
         VStack {
@@ -49,11 +50,11 @@ struct WhereToGo: View {
                     .padding(20)
                 }
                 .simultaneousGesture(TapGesture().onEnded {
-                    setTheValues()
+                    setTheValuesPas()
                 })
             } else { // MARK: - Driver UI Case
                 Stepper("Free seats:    \(freeSeats)", value: $freeSeats).padding()
-                NavigationLink(destination: DriverNavigationView()) {
+                NavigationLink(destination: DriverNavigationView(controller: self.driverController)) {
                     HStack {
                         Image(systemName: "car.fill")
                             .font(.title)
@@ -68,9 +69,10 @@ struct WhereToGo: View {
                     .cornerRadius(20)
                     .padding(20)
                 }
-                .onTapGesture {
+                .simultaneousGesture(TapGesture().onEnded {
                     setTheValues()
-                }
+                    
+                })
             }
             
         }.background(Color("BackgroundTop"))
@@ -79,6 +81,20 @@ struct WhereToGo: View {
         
     }
     func setTheValues() {
+        //MapData.shared.loadPlaceMark()
+        defaults.setValue(freeSeats, forKey: "freeSeats")
+        defaults.setValue(passenger, forKey: "passenger")
+        defaults.setValue(destination, forKey: "destination")
+        DispatchQueue.global(qos: .background).async {
+            driverController.seats = freeSeats
+            driverController.mapDisplayController.fillDestination(to: destination)
+            driverController.mapDisplayController.calculateRoute()
+            driverController.postStartDriving()
+        }
+    }
+    
+    func setTheValuesPas() {
+        MapData.shared.loadPlaceMarcPassenger()
         defaults.setValue(freeSeats, forKey: "freeSeats")
         defaults.setValue(passenger, forKey: "passenger")
         defaults.setValue(destination, forKey: "destination")

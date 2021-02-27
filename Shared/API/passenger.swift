@@ -9,7 +9,7 @@ import Foundation
 
 class PassengerApi {
     var sessionId: String = ""
-    
+    static var shared = PassengerApi()
     init() { }
     
     func postStart(config: PassengerRequest) -> Result<Void, NetworkError> {
@@ -19,8 +19,10 @@ class PassengerApi {
         
         var req = URLRequest(url: url)
         req.httpMethod = "POST"
+        print(req.httpMethod)
         do {
             req.httpBody = try JSONEncoder().encode(config)
+            print(String(data: req.httpBody!, encoding: .utf8))
         } catch {
             return .failure(.data)
         }
@@ -30,8 +32,11 @@ class PassengerApi {
         
         let semaphore = DispatchSemaphore(value: 0)
         
-        URLSession.shared.dataTask(with: url) { (data, _, _) in
+        URLSession.shared.dataTask(with: req) { (data, response, error) in
             do {
+                print("_________________")
+                print(error)
+                print(response)
                 if let data = data {
                     let decoded = try JSONDecoder().decode(SessionResponse.self, from: data)
                     self.sessionId = decoded.sessionId
@@ -60,8 +65,12 @@ class PassengerApi {
         
         let semaphore = DispatchSemaphore(value: 0)
         
-        URLSession.shared.dataTask(with: req) { (data, _, _) in
+        URLSession.shared.dataTask(with: req) { (data, response, error) in
+            
+            print(error)
+            print(response)
             do {
+                print(String(data: data!, encoding:.utf8))
                 if let data = data {
                     result = .success(try JSONDecoder().decode([PassengerInformation].self, from: data))
                 } else {
@@ -140,7 +149,8 @@ class PassengerApi {
     
     private func buildRequest(url: URL) -> URLRequest {
         var req = URLRequest(url: url)
-        req.setValue("Authorization", forHTTPHeaderField: self.sessionId)
+        print("SessionID: \(self.sessionId)")
+        req.setValue(self.sessionId, forHTTPHeaderField: "Authorization")
         return req
     }
 }

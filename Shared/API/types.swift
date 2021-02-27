@@ -56,7 +56,7 @@ struct PassengerRequest : Codable {
     var preferences: RidePreferences
 }
 
-struct PassengerInformation : Codable {
+struct PassengerInformation : Codable, Hashable {
     var driverId: Uuid
     var pickupTime: Int
     var destinationTime: Int

@@ -7,23 +7,23 @@
 
 import SwiftUI
 import MapKit
+import Alamofire
 
 struct ChooseDriverView: View {
     init() {
-        
-        
-        
+        self.apiData = MapData.shared
     }
-    
-    var drivers = [Driver(name: "Marc Jacob", eta: 19, latitude: 49.2939547, longitude: 8.6405714), Driver(name: "Duc Vo Nogc", eta: 13, latitude: 51.507222, longitude: -0.1275)]
+    @ObservedObject var apiData: MapData
+    var locationManager = LocationManager()
+    var drivers = [Driver(name: "Marc Jacob", eta: 19, latitude: 49.2939547, longitude: 8.6405714)]
     
     var body: some View {
        
         ZStack {
             ScrollView {
                 VStack {
-                    ForEach(drivers, id: \.self) { d in
-                        DriverView(name: d.name, eta: d.eta, latitude: d.latitude, longitude: d.longitude).padding()
+                    ForEach(apiData.passengerData, id: \.self) { d in
+                        DriverView(pickupTime: d.pickupTime, destinationTime: d.destinationTime).padding()
                     }
                     Text("Searching for drivers...").font(.largeTitle).padding(40)
                 }
@@ -32,6 +32,7 @@ struct ChooseDriverView: View {
         .background(Color("Background"))
         .ignoresSafeArea()
         .navigationBarHidden(true)
+        .frame(width: UIScreen.screenWidth*1.5)
     }
 }
 
