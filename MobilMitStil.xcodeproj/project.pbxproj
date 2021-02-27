@@ -29,6 +29,8 @@
 		9F3819BB25E9F5F90074803D /* DriverNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3819B925E9F5F90074803D /* DriverNavigationView.swift */; };
 		9F3819C025E9F7F30074803D /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3819BF25E9F7F30074803D /* UIScreen.swift */; };
 		9F3819C125E9F7F30074803D /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3819BF25E9F7F30074803D /* UIScreen.swift */; };
+		9F66E99825EA2F5300C20010 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F66E99725EA2F5300C20010 /* MapView.swift */; };
+		9F66E99925EA2F5300C20010 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F66E99725EA2F5300C20010 /* MapView.swift */; };
 		9F6AA19025E99905002B56B8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9F6AA18F25E99905002B56B8 /* .gitignore */; };
 		9F6AA19525E99B7D002B56B8 /* CarPlay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6AA19425E99B7D002B56B8 /* CarPlay.framework */; };
 		9FA1DEB325E997EE004FE770 /* MobilMitStilApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA1DEA025E997ED004FE770 /* MobilMitStilApp.swift */; };
@@ -51,6 +53,7 @@
 		9F0A5CDC25E9D9250075E5A7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9F3819B925E9F5F90074803D /* DriverNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverNavigationView.swift; sourceTree = "<group>"; };
 		9F3819BF25E9F7F30074803D /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		9F66E99725EA2F5300C20010 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		9F6AA18F25E99905002B56B8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		9F6AA19425E99B7D002B56B8 /* CarPlay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarPlay.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/CarPlay.framework; sourceTree = DEVELOPER_DIR; };
 		9FA1DEA025E997ED004FE770 /* MobilMitStilApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilMitStilApp.swift; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				9F3819BF25E9F7F30074803D /* UIScreen.swift */,
+				9F66E99725EA2F5300C20010 /* MapView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -262,6 +266,7 @@
 				9F3819C025E9F7F30074803D /* UIScreen.swift in Sources */,
 				9FA1DEB325E997EE004FE770 /* MobilMitStilApp.swift in Sources */,
 				9F0A5CAA25E9AC8F0075E5A7 /* DriverView.swift in Sources */,
+				9F66E99825EA2F5300C20010 /* MapView.swift in Sources */,
 				9F0A5CDD25E9D9250075E5A7 /* HomeView.swift in Sources */,
 				9F0A5CBD25E9C3EC0075E5A7 /* PassengerGetToDriverView.swift in Sources */,
 				9F0A5CC225E9C5D00075E5A7 /* NavigationDirectionsView.swift in Sources */,
@@ -282,6 +287,7 @@
 				9F3819C125E9F7F30074803D /* UIScreen.swift in Sources */,
 				9FA1DEB425E997EE004FE770 /* MobilMitStilApp.swift in Sources */,
 				9F0A5CAB25E9AC8F0075E5A7 /* DriverView.swift in Sources */,
+				9F66E99925EA2F5300C20010 /* MapView.swift in Sources */,
 				9F0A5CDE25E9D9250075E5A7 /* HomeView.swift in Sources */,
 				9F0A5CBE25E9C3EC0075E5A7 /* PassengerGetToDriverView.swift in Sources */,
 				9F0A5CC325E9C5D00075E5A7 /* NavigationDirectionsView.swift in Sources */,

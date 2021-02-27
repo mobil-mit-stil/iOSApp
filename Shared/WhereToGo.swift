@@ -6,8 +6,16 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct WhereToGo: View {
+    let defaults = UserDefaults.standard
+    init() {
+        self._freeSeats = State(initialValue: defaults.integer(forKey: "freeSeats"))
+        self._passenger = State(initialValue: defaults.bool(forKey: "passenger"))
+        self._destination = State(initialValue: defaults.string(forKey: "destination") ?? "")
+    }
+    
     @State var destination: String = "";
     @State private var passenger = true;
     @State private var freeSeats = 3
@@ -39,9 +47,12 @@ struct WhereToGo: View {
                     .cornerRadius(20)
                     .padding(20)
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    setTheValues()
+                })
             } else {
                 Stepper("Free seats:    \(freeSeats)", value: $freeSeats).padding()
-                NavigationLink(destination: PassengerGetToDriverView()) {
+                NavigationLink(destination: DriverNavigationView()) {
                     HStack {
                         Image(systemName: "car.fill")
                             .font(.title)
@@ -56,12 +67,20 @@ struct WhereToGo: View {
                     .cornerRadius(20)
                     .padding(20)
                 }
+                .simultaneousGesture(TapGesture().onEnded {
+                    setTheValues()
+                })
             }
             
         }.background(Color("BackgroundTop"))
         .cornerRadius(20)
         .shadow(color: .gray, radius: 3, x: 3, y: 3)
         
+    }
+    func setTheValues() {
+        defaults.setValue(freeSeats, forKey: "freeSeats")
+        defaults.setValue(passenger, forKey: "passenger")
+        defaults.setValue(destination, forKey: "destination")
     }
 }
 

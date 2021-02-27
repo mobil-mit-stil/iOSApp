@@ -6,17 +6,47 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ChooseDriverView: View {
+    init() {
+        
+        
+        
+        let destination = UserDefaults.standard.string(forKey: "destination")
+        print("HALLOOO")
+        print(destination)
+        let searchRequest = MKLocalSearch.Request()
+        searchRequest.naturalLanguageQuery = destination
+        let search = MKLocalSearch(request: searchRequest)
+        search.start { response, error in
+            guard let response = response else {
+                print("Error:( \(error?.localizedDescription ?? "Unknown error").")
+                return
+            }
+            var obj: MKPlacemark
+            var first = true
+            for item in response.mapItems {
+                if first {
+                    obj = item.placemark
+                    first = false
+                }
+                print(item.placemark ?? "No phone number.")
+            }
+        }
+    }
+    
+    var drivers = [Driver(name: "Marc Jacob", eta: 19, latitude: 49.2939547, longitude: 8.6405714), Driver(name: "Duc Vo Nogc", eta: 13, latitude: 51.507222, longitude: -0.1275)]
+    
     var body: some View {
+       
         ZStack {
             ScrollView {
                 VStack {
-                    DriverView(name: "Marc Jacob", eta: 19, latitude: 49.2939547, longitude: 8.6405714).padding()
-                    DriverView(name: "Duc Vo Nogc", eta: 13, latitude: 51.507222, longitude: -0.1275).padding()
-                    DriverView(name: "Dustin Ramseger", eta: 9, latitude: 49.4892913, longitude: 8.4673098).padding()
-                    DriverView(name: "Luca Schimweg", eta: 4, latitude: 48.7784485, longitude: 9.1800132).padding()
-                    Text("Searching for drivers...").font(.largeTitle).padding()
+                    ForEach(drivers, id: \.self) { d in
+                        DriverView(name: d.name, eta: d.eta, latitude: d.latitude, longitude: d.longitude).padding()
+                    }
+                    Text("Searching for drivers...").font(.largeTitle).padding(40)
                 }
             }
         }
@@ -30,4 +60,10 @@ struct ChooseDriverView_Previews: PreviewProvider {
     static var previews: some View {
         ChooseDriverView()
     }
+}
+struct Driver: Hashable {
+    var name: String
+    var eta: Int // estimated time of arrival
+    var latitude: CGFloat
+    var longitude: CGFloat
 }
