@@ -19,6 +19,7 @@ struct WhereToGo: View {
     @State var destination: String = "";
     @State private var passenger = true;
     @State private var freeSeats = 3
+   
     var body: some View {
         VStack {
             Text("Tell me your destination!").bold().font(.largeTitle).padding()
@@ -31,7 +32,7 @@ struct WhereToGo: View {
                 Text("Passenger").tag(true)
             }.pickerStyle(SegmentedPickerStyle())
             .padding()
-            if passenger {
+            if passenger { // MARK: - PassengerUI Case
                 NavigationLink(destination: ChooseDriverView()) {
                     HStack {
                         Image(systemName: "figure.wave")
@@ -50,7 +51,7 @@ struct WhereToGo: View {
                 .simultaneousGesture(TapGesture().onEnded {
                     setTheValues()
                 })
-            } else {
+            } else { // MARK: - Driver UI Case
                 Stepper("Free seats:    \(freeSeats)", value: $freeSeats).padding()
                 NavigationLink(destination: DriverNavigationView()) {
                     HStack {
@@ -67,9 +68,9 @@ struct WhereToGo: View {
                     .cornerRadius(20)
                     .padding(20)
                 }
-                .simultaneousGesture(TapGesture().onEnded {
+                .onTapGesture {
                     setTheValues()
-                })
+                }
             }
             
         }.background(Color("BackgroundTop"))

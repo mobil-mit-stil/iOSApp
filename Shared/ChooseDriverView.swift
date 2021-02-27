@@ -13,27 +13,6 @@ struct ChooseDriverView: View {
         
         
         
-        let destination = UserDefaults.standard.string(forKey: "destination")
-        print("HALLOOO")
-        print(destination)
-        let searchRequest = MKLocalSearch.Request()
-        searchRequest.naturalLanguageQuery = destination
-        let search = MKLocalSearch(request: searchRequest)
-        search.start { response, error in
-            guard let response = response else {
-                print("Error:( \(error?.localizedDescription ?? "Unknown error").")
-                return
-            }
-            var obj: MKPlacemark
-            var first = true
-            for item in response.mapItems {
-                if first {
-                    obj = item.placemark
-                    first = false
-                }
-                print(item.placemark ?? "No phone number.")
-            }
-        }
     }
     
     var drivers = [Driver(name: "Marc Jacob", eta: 19, latitude: 49.2939547, longitude: 8.6405714), Driver(name: "Duc Vo Nogc", eta: 13, latitude: 51.507222, longitude: -0.1275)]
