@@ -10,9 +10,14 @@ import MapKit
 
 struct DriverView: View {
     
-    init(pickupTime: Int, destinationTime: Int) {
-        self._name = State(initialValue: pickupTime)
-        self._eta = State(initialValue: destinationTime)
+    var driver: PassengerInformation
+    var controller: PassengerController
+    
+    init(driver: PassengerInformation, controller: PassengerController) {
+        self.controller = controller
+        self.driver = driver
+        self._name = State(wrappedValue: driver.pickupTime)
+        self._eta = State(wrappedValue: driver.destinationTime)
         self._coordinates = State(initialValue: MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: CLLocationDegrees(51.507222), longitude: CLLocationDegrees(-0.1275)), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))
     }
     
@@ -22,7 +27,7 @@ struct DriverView: View {
     @State var places = [Place(name: "Driver", latitude: 51.507222, longitude: 1275)]
     var body: some View {
         
-        NavigationLink(destination: PassengerGetToDriverView()) {
+        NavigationLink(destination: PassengerGetToDriverView(controller: controller)) {
             VStack {
                 Text("\(name) minutes until the driver arrives at the pick up point!")
                     .bold()
@@ -32,21 +37,17 @@ struct DriverView: View {
                 Text("The ride with this driver will take \(eta) minutes").foregroundColor(.black)
                 Map(coordinateRegion: $coordinates, annotationItems: places) { place in
                     MapMarker(coordinate: place.coordinate)
-                }
+                }.disabled(true)
                 .frame(height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             }.background(Color("BackgroundTop"))
             .cornerRadius(20)
             .shadow(color: .gray, radius: 3, x: 3, y: 3)
            
-        }
+        }.simultaneousGesture(TapGesture().onEnded {
+            controller.requestAndWaitForApproval(driver: driver)
+        })
         
         
-    }
-}
-
-struct DriverView_Previews: PreviewProvider {
-    static var previews: some View {
-        DriverView(pickupTime: 5, destinationTime: 25)
     }
 }
 

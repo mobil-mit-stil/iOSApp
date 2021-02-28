@@ -7,38 +7,81 @@
 
 import SwiftUI
 import MapKit
+import Lottie
 
 struct PassengerGetToDriverView: View {
-    init() {
-        //destinationPl = MapData()
-        //destinationPl.loadPlaceMark()
+    var controller: PassengerController
+    @ObservedObject var data: PassengerData
+    
+    init(controller: PassengerController) {
+        self.controller = controller
+        self.data = controller.data
     }
-    //@ObservedObject var destinationPl:MapData
-    @State private var directions: [MKRoute.Step] = []
-    @State private var showDirections = false
-
-  var body: some View {
-    ZStack {
-        MapView(data: MapDisplayData()).ignoresSafeArea()
-        VStack {
-
-                ScrollView() {
-                    ForEach(directions, id: \.self) { direction in
-                        NavigationDirectionsView(direction: direction.instructions)
-                    }
-                }.frame(height: 200, alignment: .top)
-                
-            Spacer()
-            PassengerGetToDriverInfoView(name: "Luca", eta: 4)
+    
+    var body: some View {
+        if controller.data.driverAcceptanceStatus == .pending {
+            VStack {
+                LottieView(name: "lottie").frame(width:UIScreen.screenWidth, height:300)
+                Text("Waiting for the driver's approval").font(.title2).bold()
+            }.frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight).background(Color("Background"))
+        } else {
+            ZStack {
+                MapView(data: MapDisplayData()).ignoresSafeArea()
+                VStack {
+                    
+                    ScrollView() {
+                        ForEach(self.data.mapDisplayData.directions!, id: \.self) { direction in
+                            NavigationDirectionsView(direction: direction.instructions)
+                        }
+                    }.frame(height: 200, alignment: .top)
+                    
+                    Spacer()
+                    PassengerGetToDriverInfoView(name: "Luca", eta: 4)
+                }
+            }.navigationBarHidden(true)
         }
-    }.navigationBarHidden(true)
-  }
+    }
 }
 
 
-
-struct PassengerGetToDriverView_Previews: PreviewProvider {
-  static var previews: some View {
-    PassengerGetToDriverView()
-  }
+struct LottieView: UIViewRepresentable {
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+    var name: String!
+    
+    var animationView = AnimationView()
+    
+    class Coordinator: NSObject {
+        var parent: LottieView
+        
+        init(_ animationView: LottieView) {
+            self.parent = animationView
+            super.init()
+        }
+    }
+    
+    func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
+        let view = UIView()
+        
+        animationView.animation = Animation.named(name)
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(animationView)
+        
+        NSLayoutConstraint.activate([
+            animationView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            animationView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+        
+        return view
+    }
+    
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
+        animationView.play()
+    }
 }
+

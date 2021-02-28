@@ -10,20 +10,21 @@ import MapKit
 import Alamofire
 
 struct ChooseDriverView: View {
-    init() {
-        self.apiData = MapData.shared
+    var controller: PassengerController
+    @ObservedObject var data: PassengerData
+    
+    init(controller: PassengerController) {
+        self.controller = controller
+        data = controller.data
     }
-    @ObservedObject var apiData: MapData
-    var locationManager = LocationManager()
-    var drivers = [Driver(name: "Marc Jacob", eta: 19, latitude: 49.2939547, longitude: 8.6405714)]
     
     var body: some View {
        
         ZStack {
             ScrollView {
                 VStack {
-                    ForEach(apiData.passengerData, id: \.self) { d in
-                        DriverView(pickupTime: d.pickupTime, destinationTime: d.destinationTime).padding()
+                    ForEach(data.drivers, id: \.self) { d in
+                        DriverView(driver: d, controller: controller).padding()
                     }
                     Text("Searching for drivers...").font(.largeTitle).padding(40)
                 }
@@ -32,13 +33,12 @@ struct ChooseDriverView: View {
         .background(Color("Background"))
         .ignoresSafeArea()
         .navigationBarHidden(true)
-        .frame(width: UIScreen.screenWidth*1.5)
     }
 }
 
 struct ChooseDriverView_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseDriverView()
+        ChooseDriverView(controller: PassengerController())
     }
 }
 struct Driver: Hashable {

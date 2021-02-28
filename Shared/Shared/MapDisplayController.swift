@@ -24,8 +24,7 @@ class MapDisplayData : ObservableObject {
         var locations: [Location] = []
         
         for step in route!.steps {
-            let coor = step.polyline.coordinate
-            locations.append(Location(latitude: coor.latitude, longitude: coor.longitude))
+            locations.append(step.polyline.coordinate.toModel())
         }
         
         return locations

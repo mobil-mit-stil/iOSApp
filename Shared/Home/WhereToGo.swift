@@ -20,6 +20,7 @@ struct WhereToGo: View {
     @State private var passenger = true;
     @State private var freeSeats = 3
     @State var driverController = DriverController()
+    @State var passengerController = PassengerController()
    
     var body: some View {
         VStack {
@@ -34,7 +35,7 @@ struct WhereToGo: View {
             }.pickerStyle(SegmentedPickerStyle())
             .padding()
             if passenger { // MARK: - PassengerUI Case
-                NavigationLink(destination: ChooseDriverView()) {
+                NavigationLink(destination: ChooseDriverView(controller: passengerController)) {
                     HStack {
                         Image(systemName: "figure.wave")
                             .font(.title)
@@ -94,10 +95,15 @@ struct WhereToGo: View {
     }
     
     func setTheValuesPas() {
-        MapData.shared.loadPlaceMarcPassenger()
-        defaults.setValue(freeSeats, forKey: "freeSeats")
+        //MapData.shared.loadPlaceMarcPassenger()
+        //defaults.setValue(freeSeats, forKey: "freeSeats")
         defaults.setValue(passenger, forKey: "passenger")
         defaults.setValue(destination, forKey: "destination")
+        DispatchQueue.global(qos: .background).async {
+            passengerController.mapDisplayController.fillDestination(to: destination)
+            passengerController.mapDisplayController.updateCurrentLocation()
+            passengerController.postStartPassenger()
+        }
     }
 }
 
