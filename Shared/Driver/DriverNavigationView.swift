@@ -39,8 +39,10 @@ struct DriverNavigationView: View {
                             NavigationDirectionsView(direction: direction.instructions)
                         }
                     }.frame(height: 200, alignment: .top)
-                    Spacer()
-                    PassengerRequestView()
+                    if data.requests.count > 0 {
+                        Spacer()
+                        PassengerRequestView(controller: controller, passenger: data.requests[0])
+                    }
                 }
             }.navigationBarHidden(true)
         } else {

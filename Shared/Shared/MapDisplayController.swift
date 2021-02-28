@@ -15,6 +15,7 @@ class MapDisplayData : ObservableObject {
     var destination = CLLocationCoordinate2D();
     var route: MKRoute?;
     var directions: [MKRoute.Step]?
+    var stops: [MKPlacemark] = []
     
     @Published var loaded = false;
     
@@ -22,10 +23,14 @@ class MapDisplayData : ObservableObject {
     
     func getRouteLocations() -> [Location] {
         var locations: [Location] = []
-        
-        for step in route!.steps {
-            locations.append(step.polyline.coordinate.toModel())
+        if route != nil { // MARK: crashed because of nil
+            for step in route!.steps {
+                locations.append(step.polyline.coordinate.toModel())
+            }
+        } else {
+            return []
         }
+        
         
         return locations
     }

@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct PassengerRequestView: View {
+    
+    var controller: DriverController
+    var passenger: DriverInformation
+    
+    init(controller: DriverController, passenger: DriverInformation) {
+        self.controller = controller
+        self.passenger = passenger
+    }
+    
     var body: some View {
         VStack {
             Text("A passenger on your route wants to be picked up!").font(.title).padding(15)
             Button(action: {
-                
+                controller.accept(passenger: passenger)
             }) {
                 HStack {
                     Image(systemName: "figure.wave")
@@ -34,11 +43,5 @@ struct PassengerRequestView: View {
         .shadow(color: .gray, radius: 3, x: 3, y: 3)
         .padding()
         
-    }
-}
-
-struct PassengerRequestView_Previews: PreviewProvider {
-    static var previews: some View {
-        PassengerRequestView()
     }
 }

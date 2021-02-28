@@ -41,8 +41,7 @@ class DriverApi {
         
         URLSession.shared.dataTask(with: req) { (data, _, error) in
             do {
-                print(String(data: data!, encoding:.utf8
-                ))
+                print(String(data: data!, encoding:.utf8))
                 if let data = data {
                     let decoded = try JSONDecoder().decode(SessionResponse.self, from: data)
                     self.sessionId = decoded.sessionId
@@ -180,7 +179,7 @@ class DriverApi {
     
     private func buildRequest(url: URL) -> URLRequest {
         var req = URLRequest(url: url)
-        req.setValue("Authorization", forHTTPHeaderField: self.sessionId)
+        req.setValue(self.sessionId, forHTTPHeaderField: "Authorization")
         return req
     }
 }

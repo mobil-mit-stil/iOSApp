@@ -17,9 +17,15 @@ struct PassengerGetToDriverInfoView: View {
     @State var eta: Int = 0 // Estimated time of arrival
     var body: some View {
         VStack {
-            Text("Your driver \(name) will be at your destination in ").foregroundColor(.black).padding()
-            Text("\(eta)").bold().font(.largeTitle)
-            Text("minutes.").padding()
+            if eta > 5 {
+                Text("Your driver \(name) will be at your destination in ").foregroundColor(.black).padding()
+                Text("\(eta)").bold().font(.largeTitle)
+                Text("minutes.").padding()
+            } else {
+                Text("Your driver \(name) will be at your destination in ").foregroundColor(.black).padding()
+                Text("less than 1 minute.").padding()
+            }
+           
         }.background(Color("BackgroundTop"))
         .cornerRadius(20)
         .shadow(color: .gray, radius: 3, x: 3, y: 3)

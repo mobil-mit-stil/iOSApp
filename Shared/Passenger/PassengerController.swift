@@ -54,7 +54,6 @@ class PassengerController {
     }
     
     private func updateDrivers() {
-        print(mapDisplayController.data.currentLocation)
         let res = self.api.getInformation()
         DispatchQueue.main.async {
             switch res {
@@ -91,6 +90,10 @@ class PassengerController {
                 switch res {
                 case .success(_):
                     print("Driver accepted us!")
+                    self.data.mapDisplayData.currentLocation = self.data.locationManager.lastLocation!.coordinate;
+                    self.data.mapDisplayData.destination = CLLocationCoordinate2D(latitude: self.data.drivers[0].pickupPoint.latitude, longitude: self.data.drivers[0].pickupPoint.longitude)
+                    //self.mapDisplayController.calculateRoute()
+                    print(self.data.mapDisplayData.currentLocation)
                     self.data.driverAcceptanceStatus = .accepted
                     return
                 case let .failure(error):

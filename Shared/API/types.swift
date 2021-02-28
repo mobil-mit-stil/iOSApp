@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Location : Codable {
+struct Location : Codable, Hashable, Equatable {
     var latitude: Double
     var longitude: Double
 }
@@ -40,13 +40,10 @@ struct Estimation : Codable {
     var destinationTime: Int
 }
 
-typealias AcceptanceStatus = String;
-
 struct Confirmation : Codable {
     var passengerId: Uuid
-    var status: AcceptanceStatus
+    var accepted: Bool
 }
-
 
 struct PassengerRequest : Codable {
     var location: Location
@@ -56,10 +53,14 @@ struct PassengerRequest : Codable {
     var preferences: RidePreferences
 }
 
-struct PassengerInformation : Codable, Hashable {
+struct PassengerInformation : Codable, Hashable, Equatable {
+   
     var driverId: Uuid
     var pickupTime: Int
     var destinationTime: Int
+    var pickupPoint: Location
+    var dropoffPoint: Location
+   
 }
 
 struct SessionResponse : Codable {
@@ -68,4 +69,7 @@ struct SessionResponse : Codable {
 
 struct PassengerBookRequest : Codable {
     var driverId: Uuid
+}
+struct names {
+    static var name = "Michael"
 }
