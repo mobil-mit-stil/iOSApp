@@ -25,7 +25,7 @@ struct ChooseDriverView: View {
                 VStack {
                     ForEach(data.drivers, id: \.self) { d in
                         DriverView(driver: d, controller: controller).padding()
-                    }
+                    }.offset(y: 30.0)
                     Text("Searching for drivers...").font(.largeTitle).padding(40)
                 }
             }

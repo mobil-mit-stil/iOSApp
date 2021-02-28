@@ -25,7 +25,7 @@ struct WhereToGo: View {
     var body: some View {
         VStack {
             Text("Tell me your destination!").bold().font(.largeTitle).padding()
-            TextField("Example: Huawai Deutschland", text: $destination).font(.title2).padding()
+            TextField("Example: Huawei Deutschland", text: $destination).font(.title2).padding()
                 .background(Color.white)
                 .cornerRadius(20)
                 .padding()

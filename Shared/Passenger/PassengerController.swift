@@ -92,6 +92,7 @@ class PassengerController {
                     print("Driver accepted us!")
                     self.data.mapDisplayData.currentLocation = self.data.locationManager.lastLocation!.coordinate;
                     self.data.mapDisplayData.destination = CLLocationCoordinate2D(latitude: self.data.drivers[0].pickupPoint.latitude, longitude: self.data.drivers[0].pickupPoint.longitude)
+                    
                     //self.mapDisplayController.calculateRoute()
                     print(self.data.mapDisplayData.currentLocation)
                     self.data.driverAcceptanceStatus = .accepted
